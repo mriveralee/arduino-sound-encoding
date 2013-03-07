@@ -1,19 +1,15 @@
 arduino-sound-encoding
 ======================
+    Michael Rivera
+    IPD 568 - Cultures of Making
+    Response 1 - Encoding Sound to into Images through the Arduino & Processing
+    3/2/2013
 
-Sound Encoding through the Arduino &amp; Processing for IPD-568
-
-
-================ READ ME================
-
-Michael Rivera
-IPD 568 - Cultures of Making
-Response 1 - Encoding Sound to Images
-3/2/2013
 ============================================
 
 
-+----Light Encoder Instructions ------------
+Light Encoder Instructions
+====
     - Hardware: Arduino LilyPad, Light Sensor
 
     - LightToSerial (Arduino): 
@@ -29,8 +25,8 @@ Response 1 - Encoding Sound to Images
         6) To playback the image to the Arduino LilyPad Speaker, press 'P' in the Processing image window. The values encoded will then print in the Processing console and be sent to the Arduino on the Serial Port.
         7) The sounds will play until all sounds have been  read from the image and sent from Processing to the Arduino.
 
-+----Sound Encoder Instructions ------------
-
+Sound Encoder Instructions
+====
     - Hardware: Arduino Uno, Rugged Audio Shield, 
               RadioShack Microphone, Micro SD Card
 
