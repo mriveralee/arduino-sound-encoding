@@ -12,7 +12,7 @@ int SPEAKER_PIN = 9;
 unsigned int BEATS_PER_MIN = 70;
 
 // Delay
-unsigned long DELAY_NEXT_SONG = 10000;
+unsigned long DELAY_NEXT_SONG = 120000;
 
 // Song Controls
 PlayableSong *SONG = new PlayableSong(SPEAKER_PIN, BEATS_PER_MIN, JINGLE_BELLS_NOTES, JINGLE_BELLS_NOTE_COUNT);

@@ -51,9 +51,15 @@ unsigned int PlayableNote::durationInMs(NoteValue noteValue, unsigned int bpmInQ
   // Quarter note at 60 bpm == 1 sec (1000 ms) in duration
   // Which means ==> 6000 bpm * ms base quarter not
   // So we define all others from that, with QUARTER_NOTE_MS_BY_BMP / bpm 
-  unsigned int quarterNoteDuration = round(QUARTER_NOTE_MS_BY_BMP / bpmInQuarterNote); 
+  unsigned int quarterNoteDuration = QUARTER_NOTE_MS_BY_BMP / bpmInQuarterNote; 
   unsigned int multiplier = 100;
   switch (noteValue) {
+    case DOUBLE_WHOLE_NOTE:
+      multiplier = 800;
+      break;
+    case DOTTED_WHOLE_NOTE:
+      multiplier = 600;
+      break;
     case WHOLE_NOTE:
       multiplier = 400;
       break;
@@ -79,8 +85,8 @@ unsigned int PlayableNote::durationInMs(NoteValue noteValue, unsigned int bpmInQ
       // TODO: Unsupported Note exception
       break;
   }
-  float duration = (multiplier * quarterNoteDuration) / 100.0;
-  return round(duration);
+  unsigned int duration = multiplier * quarterNoteDuration / 100;
+  return duration;
 }
 
 

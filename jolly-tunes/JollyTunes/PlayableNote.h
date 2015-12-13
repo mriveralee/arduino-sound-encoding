@@ -1,6 +1,8 @@
 #pragma once 
 
 enum NoteValue {
+  DOUBLE_WHOLE_NOTE = -2,
+  DOTTED_WHOLE_NOTE = -1,
   WHOLE_NOTE = 0,
   DOTTED_HALF_NOTE = 1,
   HALF_NOTE = 2,

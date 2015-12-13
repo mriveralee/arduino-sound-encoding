@@ -43,7 +43,7 @@ PlayableNote JINGLE_BELLS_NOTES[] = {
   PlayableNote(NOTE_D4, QUARTER_NOTE), 
   PlayableNote(NOTE_C4, QUARTER_NOTE),
   PlayableNote(NOTE_G3, DOTTED_HALF_NOTE),
-  PlayableNote(NOTE_REST, DOTTED_HALF_NOTE),
+  PlayableNote(NOTE_REST, QUARTER_NOTE),
 
   // Making spirits bright
   PlayableNote(NOTE_G3, QUARTER_NOTE), 
@@ -88,7 +88,7 @@ PlayableNote JINGLE_BELLS_NOTES[] = {
   PlayableNote(NOTE_G4, QUARTER_NOTE),
   PlayableNote(NOTE_C4, DOTTED_QUARTER_NOTE),
   PlayableNote(NOTE_D4, EIGHTH_NOTE),
-  PlayableNote(NOTE_E4, DOTTED_HALF_NOTE),
+  PlayableNote(NOTE_E4, DOTTED_QUARTER_NOTE),
   PlayableNote(NOTE_REST, QUARTER_NOTE),
 
   // Oh what fun it
@@ -130,7 +130,7 @@ PlayableNote JINGLE_BELLS_NOTES[] = {
   PlayableNote(NOTE_G4, QUARTER_NOTE),
   PlayableNote(NOTE_C4, DOTTED_QUARTER_NOTE),
   PlayableNote(NOTE_D4, EIGHTH_NOTE),
-  PlayableNote(NOTE_E4, DOTTED_HALF_NOTE),
+  PlayableNote(NOTE_E4, DOTTED_QUARTER_NOTE),
   PlayableNote(NOTE_REST, QUARTER_NOTE),
 
   // Oh what fun it
@@ -151,7 +151,7 @@ PlayableNote JINGLE_BELLS_NOTES[] = {
   PlayableNote(NOTE_G4, QUARTER_NOTE),
   PlayableNote(NOTE_F4, QUARTER_NOTE),
   PlayableNote(NOTE_D4, QUARTER_NOTE),
-  PlayableNote(NOTE_C4, WHOLE_NOTE),
+  PlayableNote(NOTE_C4, DOUBLE_WHOLE_NOTE),
 
 };
 
