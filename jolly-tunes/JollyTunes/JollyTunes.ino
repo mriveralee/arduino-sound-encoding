@@ -1,6 +1,6 @@
 #include "PlayableSong.h"
-#include "Duration.h"
 #include "JingleBells.h"
+#include "Timer.h"
 
 //DEBUG_MODE prints to the serial monitor
 boolean DEBUG_MODE = false;
@@ -8,12 +8,15 @@ boolean DEBUG_MODE = false;
 //Pin Location of the Speaker
 int SPEAKER_PIN = 9;
 
+// Beats Per Min for songs
+unsigned int BEATS_PER_MIN = 70;
+
 // Delay
-int DELAY_NEXT_SONG = 5000;
+unsigned long DELAY_NEXT_SONG = 10000;
 
-boolean IS_ON = false;
-
-PlayableSong *SONG = new PlayableSong(SPEAKER_PIN, JINGLE_BELLS_NOTES, JINGLE_BELLS_NOTE_COUNT);
+// Song Controls
+PlayableSong *SONG = new PlayableSong(SPEAKER_PIN, BEATS_PER_MIN, JINGLE_BELLS_NOTES, JINGLE_BELLS_NOTE_COUNT);
+Timer *PAUSE_TIMER = new Timer(DELAY_NEXT_SONG);
 
 //------------------------------------------
 
@@ -27,12 +30,16 @@ void setup() {
 
 //the Main Loop of our program
 void loop() {
+  if (PAUSE_TIMER->isActive()) {
+    PAUSE_TIMER->tick();
+    return;
+  }
+  
   SONG->playNextNote();
 
   if (SONG->hasFinished()) {
-    Serial.println("FINISHED");
-    delay(DELAY_NEXT_SONG);
     SONG->resetPlayIndex();
+    PAUSE_TIMER->start();
   }
 }
 

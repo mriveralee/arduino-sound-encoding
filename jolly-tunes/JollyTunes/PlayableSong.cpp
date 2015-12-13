@@ -1,13 +1,18 @@
 #include "PlayableSong.h"
-#include "Arduino.h"
 
-PlayableSong::PlayableSong(unsigned int speakerPin, PlayableNote notes[], unsigned int noteCount) {
+PlayableSong::PlayableSong(
+  unsigned int speakerPin, 
+  unsigned int bpm, 
+  PlayableNote notes[], 
+  unsigned int noteCount) {
   this->speakerPin = speakerPin;
+  this->bpm = bpm;
   this->notes = notes;
   this->noteCount = noteCount;
   this->playIndex = 0;
   this->hasStartedPlayback = false;
 }
+
 // TODO: Destructor
 
 bool PlayableSong::hasStarted() {
@@ -38,10 +43,8 @@ void PlayableSong::playNextNote() {
   if (!this->hasStartedPlayback) {
     this->hasStartedPlayback = true;
   }
-  Serial.println(this->hasStartedPlayback ? "YES" : "nO");
   this->playNote(this->playIndex);
   this->playIndex++;
-  Serial.println(this->playIndex);
 };
 
 void PlayableSong::resetPlayIndex() {
@@ -50,6 +53,11 @@ void PlayableSong::resetPlayIndex() {
 }
 
 void PlayableSong::playNote(unsigned int noteIndex) {
+  this->playNote(noteIndex, this->bpm);
+}
+
+void PlayableSong::playNote(unsigned int noteIndex, unsigned int bpm) {
+
   if (noteIndex >= this->getNoteCount()) {
     return;
   }
@@ -58,7 +66,9 @@ void PlayableSong::playNote(unsigned int noteIndex) {
 //  if (!note) {
 //    return;
 //  }
-  
-  note.play(this->speakerPin);
+  note.play(this->speakerPin, bpm);
 }
+
+    
+
 
