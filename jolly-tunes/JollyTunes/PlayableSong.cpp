@@ -69,6 +69,3 @@ void PlayableSong::playNote(unsigned int noteIndex, unsigned int bpm) {
   note.play(this->speakerPin, bpm);
 }
 
-    
-
-

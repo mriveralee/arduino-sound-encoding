@@ -29,14 +29,13 @@ void PlayableNote::play(int pin, unsigned int bpm) {
   unsigned int duration = PlayableNote::durationInMs(this->noteValue, bpm);
   // For Rests
   if (this->frequency == NOTE_REST) {
-    noTone(pin);
     PlayableNote::pauseBetweenNotes(duration);
     return;
   } else {
     tone(pin, this->frequency); 
     PlayableNote::pauseBetweenNotes(duration);
-    noTone(pin);
   }
+  noTone(pin);
 }
 
 // static int PlayableNote::mtof(int midiValue);

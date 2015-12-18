@@ -11,21 +11,22 @@ int SPEAKER_PIN = 9;
 // Beats Per Min for songs
 unsigned int BEATS_PER_MIN = 70;
 
-// Delay
+// Delay by 2 mins
 unsigned long DELAY_NEXT_SONG = 120000;
 
 // Song Controls
-PlayableSong *SONG = new PlayableSong(SPEAKER_PIN, BEATS_PER_MIN, JINGLE_BELLS_NOTES, JINGLE_BELLS_NOTE_COUNT);
+PlayableSong *SONG = new PlayableSong(
+  SPEAKER_PIN, 
+  BEATS_PER_MIN, 
+  JINGLE_BELLS_NOTES, 
+  JINGLE_BELLS_NOTE_COUNT);
 Timer *PAUSE_TIMER = new Timer(DELAY_NEXT_SONG);
 
 //------------------------------------------
-
 //Does initialization & sets up variables
 void setup() {
   //Initialize the Serial Port for Writing
-  Serial.begin(9600);
   pinMode(SPEAKER_PIN, OUTPUT);
-  delay(1000);
 }
 
 //the Main Loop of our program
@@ -34,12 +35,12 @@ void loop() {
     PAUSE_TIMER->tick();
     return;
   }
-  
   SONG->playNextNote();
-
   if (SONG->hasFinished()) {
     SONG->resetPlayIndex();
     PAUSE_TIMER->start();
   }
 }
+
+
 
