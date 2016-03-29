@@ -6,6 +6,7 @@
 
 #define QUARTER_NOTE_MS_BY_BMP 60000
 #define DELAY_BETWEEN_NOTES 500
+#define DURATION_DELAY_MULTIPLIER 1.3
 
 
 PlayableNote::PlayableNote(unsigned int frequency, NoteValue noteValue) {
@@ -27,13 +28,18 @@ NoteValue PlayableNote::getNoteValue() {
 
 void PlayableNote::play(int pin, unsigned int bpm) {
   unsigned int duration = PlayableNote::durationInMs(this->noteValue, bpm);
+  
+  tone(4, duration, 2000);
+  delay(2000);
+  noTone(4);
+
   // For Rests
   if (this->frequency == NOTE_REST) {
     PlayableNote::pauseBetweenNotes(duration);
     return;
   } else {
-    tone(pin, this->frequency); 
-    PlayableNote::pauseBetweenNotes(duration);
+    tone(pin, this->frequency, duration); 
+    PlayableNote::pauseBetweenNotes(duration * DURATION_DELAY_MULTIPLIER);
   }
   noTone(pin);
 }
@@ -42,7 +48,7 @@ void PlayableNote::play(int pin, unsigned int bpm) {
 // static int PlayableNote::ftom(int frequencyValue);
 
 //Places a rest between notes while playing so that they are distinguishable
-void PlayableNote::pauseBetweenNotes(int timeInMs) {
+void PlayableNote::pauseBetweenNotes(unsigned int timeInMs) {
     delay(timeInMs);
 }
 

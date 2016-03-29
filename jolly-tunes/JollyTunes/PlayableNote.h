@@ -31,7 +31,7 @@ class PlayableNote {
     
     //int getMidiValue()
   
-    static void pauseBetweenNotes(int noteDuration);
+    static void pauseBetweenNotes(unsigned int noteDuration);
     static unsigned int durationInMs(NoteValue noteValue, unsigned int bpm);
     // static int mtof(int midiValue);
     // static int ftom(int frequencyValue);
